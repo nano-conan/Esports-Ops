@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Game extends Model
+class Marker extends Model
 {
     use HasFactory;
 
-    public function markers() {
-        return $this->hasMany(Marker::class);
+    public function game() {
+        return $this->belongsTo(Game::class);
     }
 }

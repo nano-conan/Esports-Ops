@@ -18,5 +18,46 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\Game::create([
+                'name' => 'Outlaws',
+                'subtitle' => 'Scrim 1',
+                'icon' => 'storage/outlaws.png',
+                'description' => 'Our first scrim as a team',
+                'team' => 'Cloudbound Shadows',
+                'mm' => 'Kin',
+                'jungle' => 'Kairu',
+                'exp' => 'Gully',
+                'mid' => 'Conan',
+                'tank' => 'A Mexican',
+                'video' => 'storage/matches/UBAA2975.MP4'
+        ]);
+
+
+        \App\Models\Game::create([
+                'name' => 'Champions',
+                'subtitle' => 'Scrim 1',
+                'icon' => 'storage/champions.jpg',
+                'description' => 'Another exciting match',
+                'team' => 'Skyward Knights',
+                'mm' => 'Ryu',
+                'jungle' => 'Takashi',
+                'exp' => 'Luna',
+                'mid' => 'Hikari',
+                'tank' => 'Samurai Jack',
+                'video' => 'storage/matches/UBAA2975.MP4'
+        ]);
+
+        $markersData = [
+            ['seconds' => 30, 'message' => 'Missed Skill'],
+            ['seconds' => 33, 'message' => 'Missed Skill'],
+        ];
+
+        $game = \App\Models\Game::all();
+
+        $game->map(function ($g) use ($markersData){
+            $g->markers()->createMany($markersData);
+            $g->update();
+        });
     }
 }

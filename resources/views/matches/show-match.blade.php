@@ -66,7 +66,7 @@
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
 
                                 <video class="w-full" id="player" controls>
-                                        <source src="{{asset('storage/matches/UBAA2975.MP4')}}" type="video/mp4">
+                                        <source src="{{asset($game->video)}}" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                 </p>
