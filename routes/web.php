@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Game;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,32 @@ Route::middleware([
             'logo' => 'storage/cbs-transparent.png',
             'game' => Game::find($id)
         ]);
+    });
+
+    Route::post('/games', function (Request $request) {
+        $formFields = $request->validate([
+            'name' => 'required',
+            'subtitle' => 'required',
+            'description' => 'required',
+            'mm' => 'required',
+            'jungle' => 'required',
+            'exp' => 'required',
+            'mid' => 'required',
+            'tank' => 'required',
+            'video' => 'required'
+        ]);
+
+        $formFields['team'] = "CloudboundShadows";
+        $formFields['video'] = $request->file('video')->store('public');
+
+        if($request->hasFile('icon')) {
+            $formFields['icon'] = $request->file('icon')->store('public');
+        }
+
+
+        Game::create($formFields);
+
+        return redirect('/')->with('message', 'Game uploaded successfully!');
     });
 
     Route::get('/logout', function ($request) {

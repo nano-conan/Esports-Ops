@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('subtitle');
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->string('description');
             $table->string('team');
             $table->string('mm');

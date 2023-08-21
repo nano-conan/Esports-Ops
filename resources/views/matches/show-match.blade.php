@@ -57,10 +57,11 @@
                             <div>
                                 <div class="flex items-center text-gray-500 dark:text-gray-400 mt-2">
                                     <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <img src="{{ asset('storage/outlaws.png') }}" alt="" srcset="" class="rounded-full">
+                                        <img src="{{ asset($game->logo) }}" alt="" srcset="" class="rounded-full">
                                     </div>
                                     <span class="text-base ml-4">
-                                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Outlaws: Scrim 1</h2>
+                                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{$game->name}}</h2>
+                                        <p>{{$game->subtitle}}</p>
                                     </span>
                                 </div>
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
